@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow rounded">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">Add New Staff Member</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Add Staff</button>
+                </div>
+            </form>
+            <div class="mt-3">
+                <a href="{% url 'manage_staff' %}" class="btn btn-secondary">Back to Manage Staff</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

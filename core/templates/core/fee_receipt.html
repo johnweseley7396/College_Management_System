@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fee Payment Receipt</title>
+</head>
+<body>
+    <h1>Fee Payment Receipt</h1>
+    <p><strong>Student Name:</strong> {{ fee.student.name }}</p>
+    <p><strong>Roll Number:</strong> {{ fee.roll_no }}</p>
+    <p><strong>Email:</strong> {{ fee.email_id }}</p>
+    <p><strong>Course:</strong> {{ fee.course }}</p>
+    <p><strong>Total Amount:</strong> ₹{{ fee.total_amount }}</p>
+    <p><strong>Amount Paid:</strong> ₹{{ fee.amount_paid }}</p>
+    <p><strong>Due Amount:</strong> ₹{{ fee.due_amount }}</p>
+    <p><strong>Payment Status:</strong> {% if fee.is_paid %}Paid{% else %}Unpaid{% endif %}</p>
+    <p><strong>Payment Date:</strong> {{ fee.payment_date }}</p>
+
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>

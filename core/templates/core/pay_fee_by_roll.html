@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Fee by Roll Number</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Pay Fee by Roll Number</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="roll_number" class="form-label">Roll Number:</label>
+            <input type="text" class="form-control" id="roll_number" name="roll_number" required>
+        </div>
+        <div class="mb-3">
+            <label for="amount_paid" class="form-label">Amount to Pay:</label>
+            <input type="number" class="form-control" id="amount_paid" name="amount_paid" min="1" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Pay Now</button>
+    </form>
+</div>
+</body>
+</html>

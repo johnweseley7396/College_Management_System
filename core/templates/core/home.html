@@ -1,0 +1,463 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ANU COLLEGE OF ENGINEERING</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #004e92, #000428);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+    .navbar-brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+    .navbar-brand img {
+      height: 45px;
+      margin-right: 10px;
+    }
+    .nav-link {
+      color: #fff !important;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #ffc107 !important;
+      transform: scale(1.1);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      background: url('https://via.placeholder.com/1500x500?text=Smart+College+Management+System') no-repeat center center/cover;
+      height: 400px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn-custom {
+      border-radius: 50px;
+      padding: 10px 25px;
+      font-weight: 600;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* About College */
+    .about-section {
+      padding: 50px 0;
+    }
+    .about-section h2 {
+      color: #004e92;
+      font-weight: 700;
+    }
+
+    /* University Section */
+    .university-section {
+      background-color: #fff;
+      padding: 50px 0;
+      margin: 40px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .university-img {
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Leadership Cards */
+    .card {
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      height: fit-content;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card-img-top {
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    /* Form */
+    .student-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-top: 40px;
+    }
+
+    /* Footer */
+    footer {
+      background: #343a40;
+      color: #ddd;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #ffc107;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="{% static 'images/logo.jpg' %}" alt="Logo">
+      Smart College
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/check-fee/">Check Fee</a></li>
+        <li class="nav-item"><a class="nav-link" href="/check-result/">Check Result</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin-dashboard/">Admin Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/hod-dashboard/">HOD Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/staff-dashboard/">Staff Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://www.nagarjunauniversity.ac.in/" target="_blank">Official Site</a></li>
+
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>Welcome to Acharya Nagarjuna University College Of Engineering And Technology</h1>
+    <p>Empowering Education with Technology</p>
+    <a href="/check-fee/"  class="btn btn-custom btn-dark">Check Fee Status</a>
+    <a href="/check-result/" class="btn btn-custom btn-dark">Check Result</a>
+    <a href="/admin-dashboard/"  class="btn btn-custom btn-dark">Admin Dashboard</a>
+    <a href="/hod-dashboard/" class="btn btn-custom btn-dark">HOD Dashboard</a>
+    <a href="/staff-dashboard/" class="btn btn-custom btn-dark">Staff Dashboard</a>
+    <a href="{% url 'pay_fee_by_roll' %}" class="btn btn-custom btn-dark">Pay Fee by Roll Number</a>
+    <a href="/admin/" class="btn btn-dark">Admin Panel</a>
+
+
+  </div>
+</section>
+
+<!-- About Section with Hexagons in Circle Shape and Vision/Mission -->
+<section class="about-section text-center">
+  <div class="container">
+    <h2>About Our College</h2>
+    <p>Smart College is dedicated to nurturing future leaders through academic excellence and real-world skills.</p>
+    
+    <!-- Courses Offered in Hexagons Circle -->
+    <h5 class="mt-4 mb-4">Courses Offered:</h5>
+    <div class="hexagon-circle-container">
+      <div class="hexagon-box" style="--i:0;"><div class="hexagon">B.Tech<br>CSE</div></div>
+      <div class="hexagon-box" style="--i:1;"><div class="hexagon">B.Tech<br>ECE</div></div>
+      <div class="hexagon-box" style="--i:2;"><div class="hexagon">B.Tech<br>EEE</div></div>
+      <div class="hexagon-box" style="--i:3;"><div class="hexagon">B.Tech<br>MECH</div></div>
+      <div class="hexagon-box" style="--i:4;"><div class="hexagon">B.Tech<br>CIVIL</div></div>
+      <div class="hexagon-box" style="--i:5;"><div class="hexagon">M.Tech<br>CN</div></div>
+    </div>
+
+    <!-- Vision and Mission Section -->
+    <div class="vision-mission mt-5">
+      <h3 class="text-primary mb-3">Our Vision</h3>
+      <p class="vision-text">
+        To be a premier institution of higher education committed to excellence in teaching, research, and community service. We aim to shape global leaders who can drive innovation and social transformation through knowledge, creativity, and ethical values.
+      </p>
+
+      <h3 class="text-primary mt-4 mb-3">Our Mission</h3>
+      <p class="mission-text">
+        Our mission is to provide high-quality education that nurtures intellectual growth, critical thinking, and practical skills. We strive to empower students with knowledge and confidence to face real-world challenges, foster innovation, and contribute meaningfully to society while upholding integrity and compassion.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Inline CSS Styling -->
+<style>
+  /* Circle container for hexagons */
+  .hexagon-circle-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin: 0 auto 60px auto;
+  }
+  .hexagon-box {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: rotate(calc(60deg * var(--i))) translate(140px) rotate(calc(-60deg * var(--i)));
+  }
+  .hexagon {
+    width: 100px;
+    height: 58px;
+    background: linear-gradient(135deg, #004e92, #000428);
+    position: absolute;
+    top: 21px;
+    left: 0;
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    clip-path: polygon(
+      50% 0%, 
+      100% 25%, 
+      100% 75%, 
+      50% 100%, 
+      0% 75%, 
+      0% 25%
+    );
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+  }
+  .hexagon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #000428, #004e92);
+  }
+
+  /* Vision & Mission Styling */
+  .vision-mission {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: left;
+  }
+  .vision-mission h3 {
+    color: #004e92;
+    font-weight: 700;
+  }
+  .vision-mission p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+</style>
+<!-- Student Dashboard Form -->
+<div class="container student-form">
+  <h4 class="text-center">Access Your Student Dashboard</h4>
+  <form action="{% url 'student_dashboard_redirect' %}" method="get">
+    <div class="mb-3">
+      <label for="roll" class="form-label">Enter Roll Number:</label>
+      <input type="text" class="form-control" id="roll" name="roll" placeholder="e.g., Y22CS3232" required>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">View Dashboard</button>
+    </div>
+  </form>
+</div>
+
+
+<!-- University Section -->
+<section class="university-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="{% static 'images/clg.png' %}" class="university-img w-100" alt="Acharya Nagarjuna University Campus">
+      </div>
+      <div class="col-md-6">
+        <h2 class="mb-4">About the University</h2>
+        <h3 class="text-primary mb-3">Welcome to Acharya Nagarjuna University</h3>
+        <p>Acharya Nagarjuna University, a state university established in 1976, has been constantly striving towards achieving progress and expansion during its existence for over four decades, in terms of introducing new courses in the University Colleges, affiliated colleges and professional colleges.</p>
+        <p>Spread over 300 acres of land on the National High Way (NH-16) between Vijayawada and Guntur of Andhra Pradesh, which is declared as state capital of Andhra Pradesh, the University is one of the front ranking and fastest expanding Universities in the state of Andhra Pradesh.</p>
+        <p>The university was inaugurated on 11th September, 1976 by the then President of India, Sri Faktuddin Ali Ahmed and celebrated its Silver Jubilee in 2001. The National Assessment and Accreditation Council (NAAC) awarded grade to Acharya Nagarjuna University.</p>
+        <p>It is named after Acharya Nagarjuna one of the most brilliant preceptors and philosophers, whose depth of thought, clarity of perception and spiritual insight were such that even after centuries, he is a source of inspiration to a vast number of people in many countries.</p>
+        <p>The University is fortunate to be situated on the very soil where he was born and lived, a soil made more sacred by the aspiration for light and a state of whole someness by generations of students. With campus student strength of over 5000, the University offers instruction for higher learning in 68 UG & PG programs and guidance for the award of M.Phil and Ph.D in 48 disciplines spread over six campus colleges.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Our Colleges Gallery Section -->
+<section class="container my-5">
+  <h2 class="text-center mb-4">Our Colleges Gallery</h2>
+  <div class="row text-center">
+    <!-- Row 1 -->
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/anu_engineering.jpg' %}" class="card-img-top" alt="ANU College of Engineering">
+        <div class="card-body">
+          <h5 class="card-title">ANU College of Engineering</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/anu_sciences.jpg' %}" class="card-img-top" alt="ANU College of Sciences">
+        <div class="card-body">
+          <h5 class="card-title">ANU College of Sciences</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/law.jpg' %}" class="card-img-top" alt="ANU College of Arts, Commerce & Law">
+        <div class="card-body">
+          <h5 class="card-title">ANU College of Arts, Commerce & Law</h5>
+        </div>
+      </div>
+    </div>
+    <!-- Row 2 -->
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/anu_pharmacy.jpg' %}" class="card-img-top" alt="ANU College of Pharmacy">
+        <div class="card-body">
+          <h5 class="card-title">ANU College of Pharmacy</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/anu_sports.jpg' %}" class="card-img-top" alt="ANU College of Sports">
+        <div class="card-body">
+          <h5 class="card-title">ANU College of Sports</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="{% static 'images/anu_architecture.jpeg' %}" class="card-img-top" alt="ANU College of Architecture & Planning">
+        <div class="card-body">
+          <h5 class="card-title">ANU College of Architecture & Planning</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Webpage</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
+<!-- style -->
+    <div style="display: flex; justify-content: space-between; padding: 20px;">
+        <div style="width: 60%;">
+            <div style="background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <h2>UNIVERSITY CENTRAL LIBRARY</h2>
+                <p>Learn More</p>
+            </div>
+            <div style="background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <h2>Data Center</h2>
+                <p>Learn More</p>
+            </div>
+            <div style="background-color: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                <h2>ANU Placements</h2>
+                <p>Learn More</p>
+            </div>
+        </div>
+        
+        <div style="width: 35%; display: flex; align-items: center; justify-content: center;">
+            <img src="{% static 'images/placeholder.jpg' %}" alt="Person Image" class="person-image">
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- Leadership Section -->
+<section class="container my-5">
+  <h2 class="text-center mb-4">Our Leadership</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="{% static 'images/images.jpg' %}" class="card-img-top" alt="VC">
+        <div class="card-body text-center">
+          <h5 class="card-title">Prof. K. Gangadhara Rao</h5>
+          <p class="card-text">Vice Chancellor</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="{% static 'images/satish.png' %}" class="card-img-top" alt="HOD">
+        <div class="card-body text-center">
+          <h5 class="card-title">Dr. U. Satish Kumar</h5>
+          <p class="card-text">Head of Department - CSE</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="text-center mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>About Us</h5>
+        <p>Acharya Nagarjuna University, a state university established in 1976, has been constantly striving towards achieving progress and expansion during its existence for over four decades, in terms of introducing new courses in the University Colleges, affiliated colleges and professional colleges. Spread over 300 acres of land on NH16 between Vijayawada and Guntur, Andhra Pradesh, the University is one of the front-ranking institutions in the state.</p>
+      </div>
+      <div class="col-md-6">
+        <h5>Contact Us</h5>
+        <p>Phone: 0863-234 6118, 0863-234 6171</p>
+        <p>Email: <a href="mailto:helpcenter@anu.ac.in">helpcenter@anu.ac.in</a></p>
+        <p>Address: Acharya Nagarjuna University, NH16, Nagarjuna Nagar, Guntur, Andhra Pradesh 522510</p>
+      </div>
+    </div>
+  </div>
+  <p>&copy; 2025 Smart College | Contact: 
+    <a href="mailto:mathangijohnwesley@gmail.com">mathangijohnwesley@gmail.com</a> | Phone: 7396951575
+  </p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

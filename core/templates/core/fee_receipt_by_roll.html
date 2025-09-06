@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Receipt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4">Fee Payment Receipt</h2>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Student Name</th>
+                <td>{{ student.name }}</td>
+            </tr>
+            <tr>
+                <th>Roll Number</th>
+                <td>{{ student.roll_number }}</td>
+            </tr>
+            <tr>
+                <th>Total Fee</th>
+                <td>{{ fee.total_amount }}</td>
+            </tr>
+            <tr>
+                <th>Amount Paid</th>
+                <td>{{ fee.amount_paid }}</td>
+            </tr>
+            <tr>
+                <th>Due Amount</th>
+                <td>{{ fee.due_amount }}</td>
+            </tr>
+            <tr>
+                <th>Payment Date</th>
+                <td>{{ fee.payment_date }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if fee.is_paid %}Paid{% else %}Due{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

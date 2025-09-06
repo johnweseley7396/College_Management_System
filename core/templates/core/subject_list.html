@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Subject List</title></head>
+<body>
+    <h2>Subjects Handled by Me</h2>
+    <ul>
+        {% for subject in subjects %}
+            <li>{{ subject.name }}</li>
+        {% empty %}
+            <li>No subjects found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!-- core/templates/core/manage_course.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Manage Courses</title>
+    <style>
+        /* Simple styling similar to student list */
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        h1 { margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f4f4f4; }
+        a.button {
+            background-color: #007bff; color: white; padding: 8px 14px;
+            text-decoration: none; border-radius: 4px;
+            margin-bottom: 15px; display: inline-block;
+        }
+        a.button:hover { background-color: #0056b3; }
+        .actions a { margin-right: 10px; color: #007bff; text-decoration: none; }
+        .actions a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Manage Courses</h1>
+    <a href="{% url 'add_course' %}" class="button">Add New Course</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Course Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.id }}</td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.description }}</td>
+                <td class="actions">
+                    <a href="{% url 'edit_course' course.id %}">Edit</a>
+                    <a href="{% url 'delete_course' course.id %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">No courses found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

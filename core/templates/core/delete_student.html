@@ -1,0 +1,42 @@
+<!-- core/templates/core/delete_student.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Delete Student</title>
+    <style>
+        .container { width: 40%; margin: 60px auto; text-align: center; }
+        h1 { color: #d32f2f; }
+        p { margin: 20px 0; font-size: 1.1em; }
+        form { display: inline-block; margin-top: 30px; }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .btn-confirm { background-color: #d32f2f; color: white; }
+        .btn-cancel { background-color: #ccc; color: #333; }
+        .btn-confirm:hover { background-color: #b71c1c; }
+        .btn-cancel:hover { background-color: #999; }
+        a { text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Student</h1>
+        <p>Are you sure you want to delete student: <strong>{{ student.full_name }}</strong>?</p>
+        
+        <form method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn-confirm">Yes, Delete</button>
+        </form>
+
+        <a href="{% url 'manage_student' %}">
+            <button class="btn-cancel" type="button">Cancel</button>
+        </a>
+    </div>
+</body>
+</html>

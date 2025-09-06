@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Subject</h2>
+
+<form method="POST" novalidate>
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <button type="submit" class="btn btn-success">Add Subject</button>
+  <a href="{% url 'manage_subject' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

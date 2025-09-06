@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        .dashboard-container { padding: 20px; max-width: 1000px; margin: auto; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; margin-bottom: 30px; }
+        .stats-boxes { display: flex; justify-content: space-around; margin-bottom: 40px; }
+        .box { background: #e3e6f3; padding: 20px; border-radius: 8px; width: 22%; text-align: center; }
+        canvas { margin: 30px 0; }
+        a { display: inline-block; margin-top: 20px; text-align: center; color: #007BFF; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<div class="dashboard-container">
+    <h1>Admin Dashboard</h1>
+
+    <div class="stats-boxes">
+        <div class="box">
+            <h3>Total Students</h3>
+            <p>{{ total_students }}</p>
+        </div>
+        <div class="box">
+            <h3>Total Fee Paid</h3>
+            <p>₹{{ total_fee_paid }}</p>
+        </div>
+        <div class="box">
+            <h3>Total Fee Due</h3>
+            <p>₹{{ total_fee_due }}</p>
+        </div>
+        <div class="box">
+            <h3>Grade Entries</h3>
+            <p>{{ total_results }}</p>
+        </div>
+    </div>
+
+    <canvas id="gradeChart"></canvas>
+    <canvas id="feeChart"></canvas>
+
+    <script>
+        const gradeChart = new Chart(document.getElementById('gradeChart'), {
+            type: 'pie',
+            data: {
+                labels: ['A', 'B', 'C', 'F'],
+                datasets: [{
+                    label: 'Grade Distribution',
+                    data: [{{ grade_counts.A }}, {{ grade_counts.B }}, {{ grade_counts.C }}, {{ grade_counts.F }}],
+                    backgroundColor: ['#28a745', '#17a2b8', '#ffc107', '#dc3545']
+                }]
+            }
+        });
+
+        const feeChart = new Chart(document.getElementById('feeChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Paid', 'Due'],
+                datasets: [{
+                    label: 'Fee Status (₹)',
+                    data: [{{ total_fee_paid }}, {{ total_fee_due }}],
+                    backgroundColor: ['#007bff', '#ff6384']
+                }]
+            }
+        });
+    </script>
+
+    <a href="/">Back to Home</a>
+</div>
+</body>
+</html>

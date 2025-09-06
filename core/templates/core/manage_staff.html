@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Manage Staff</h1>
+
+<a href="{% url 'add_staff' %}">Add New Staff</a>
+
+<table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <th>ID</th><th>Name</th><th>Email</th><th>Department</th><th>Actions</th>
+    </tr>
+    {% for staff in staffs %}
+    <tr>
+        <td>{{ staff.id }}</td>
+        <td>{{ staff.first_name }} {{ staff.last_name }}</td>
+        <td>{{ staff.email }}</td>
+        <td>{{ staff.department }}</td>
+        <td>
+            <a href="{% url 'edit_staff' staff.id %}">Edit</a> |
+            <a href="{% url 'delete_staff' staff.id %}">Delete</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No staff found.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

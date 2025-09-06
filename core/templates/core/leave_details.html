@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Leave Details</title></head>
+<body>
+    <h2>My Leave Requests</h2>
+    <ul>
+        {% for leave in leaves %}
+            <li>{{ leave.reason }} | From: {{ leave.from_date }} To: {{ leave.to_date }} | Status: {{ leave.status }}</li>
+        {% empty %}
+            <li>No leave requests found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

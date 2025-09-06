@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Students Under Me</title></head>
+<body>
+    <h2>Students Under My Department</h2>
+    <ul>
+        {% for student in students %}
+            <li>{{ student.name }} ({{ student.roll_number }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
